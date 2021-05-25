@@ -4,6 +4,7 @@ const config = require('../config/keys');
 const { struct } = require('pb-util');
 
 const projectID = config.googleProjectID;
+const sessionID = config.dialogFlowSessionID;
 // Credentials from dev.js
 const credentials = {
     client_email: config.googleClientEmail,
@@ -14,10 +15,11 @@ const credentials = {
 const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
 
 // Set parameters from Dialogflow Fontys PRO Chatbot project
-const sessionPath = sessionClient.sessionPath(config.googleProjectID, config.dialogFlowSessionID);
+
 
 module.exports = {
-    textQuery: async function(text, parameters = {}) {
+    textQuery: async function(text, userID, parameters = {}) {
+        let sessionPath = sessionClient.sessionPath(projectID, sessionID + userID);
         let self = module.exports;
         // The text query request.
         const request = {
@@ -42,8 +44,9 @@ module.exports = {
         return responses;
          },
 
-    eventQuery: async function(event, parameters = {}) {
+    eventQuery: async function(event, userID, parameters = {}) {
             let self = module.exports;
+            let sessionPath = sessionClient.sessionPath(projectID, sessionID + userID);
             // The text query request.
             const request = {
                 session: sessionPath,
