@@ -39,7 +39,7 @@ class Chatbot extends Component {
         // Zorgt voor het juist weergeven van de data
         this.setState({ messages: [...this.state.messages, says] });
         // Opvragen van gegevens in de backend / API vanuit Dialogflow
-        const res = await axios.post('api/df_text_query', { text })
+        const res = await axios.post('api/df_text_query', { text, userID: cookies.get('userID') })
 
         // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
         for(let msg of res.data.fulfillmentMessages) {
@@ -54,7 +54,7 @@ class Chatbot extends Component {
     
 
     async df_event_query(event) {
-        const res = await axios.post('api/df_event_query', { event })
+        const res = await axios.post('api/df_event_query', { event, userID: cookies.get('userID') })
 
         for(let msg of res.data.fulfillmentMessages) {
             let says = {
