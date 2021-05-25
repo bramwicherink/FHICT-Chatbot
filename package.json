@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "node index.js",
-    "backend": "nodemon index.js"
+    "backend": "nodemon index.js",
+    "frontend": "npm run front --prefix client",
+    "dev": "concurrently \"npm run backend\"  \"npm run start --prefix client\""
   },
   "author": "Bram Wicherink",
   "license": "ISC",
@@ -21,6 +23,7 @@
     "structjson": "^1.0.1"
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "nodemon": "^2.0.7"
   }
 }
