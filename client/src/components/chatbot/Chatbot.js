@@ -43,6 +43,8 @@ class Chatbot extends Component {
 
         // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
         for(let msg of res.data.fulfillmentMessages) {
+            console.log(JSON.stringify(msg));
+            console.log(msg);
             says = {
                 speaks: 'bot',
                 msg: msg
@@ -76,7 +78,13 @@ class Chatbot extends Component {
     renderMessages(stateMessages) {
         if(stateMessages) {
             return stateMessages.map((message, i) => {
-                return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />
+                // if(messages.msg && messages.msg.text && messages.msg.text.text) {
+                //     return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />
+                // }   
+                // else {
+                //     return <h2>Cards</h2>
+                // }
+                
             })
         } else {
             return null;
