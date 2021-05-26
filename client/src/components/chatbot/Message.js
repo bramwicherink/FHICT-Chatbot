@@ -6,6 +6,7 @@ const Message = (props) => (
             <div className="row valign-wrapper">
                 
                 {props.speaks==='bot' && 
+                // Show avatar of bot
                 <div className="col s2">
                 <a className="btn-floating btn-large waves-effect waves-light blue">{props.speaks}</a>
                 </div>
@@ -18,6 +19,7 @@ const Message = (props) => (
             </div>
 
             {props.speaks==='Ik' && 
+            // Show avatar of 'Ik/me'
                 <div className="col s2">
                 <a className="btn-floating btn-large waves-effect waves-light blue">{props.speaks}</a>
                 </div>

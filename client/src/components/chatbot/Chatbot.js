@@ -3,6 +3,7 @@ import axios from 'axios/index';
 import Message from './Message';
 import Cookies from 'universal-cookie';
 import { v4 as uuid } from 'uuid';
+import Card from './Card';
 
 const cookies = new Cookies();
 
@@ -24,7 +25,7 @@ class Chatbot extends Component {
     }
 
     // Functie die zorgt voor het juist weergeven van de tekst in de chatbotwidget
-
+    // Text verwerking
     async df_text_query(text) {
 
         // Data initialisatie
@@ -43,7 +44,10 @@ class Chatbot extends Component {
 
         // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
         for(let msg of res.data.fulfillmentMessages) {
-            console.log(JSON.stringify(msg));
+            console.log("msg = " + JSON.stringify(msg));
+            // console.log("message.msg = " + JSON.stringify(message.msg));
+            //     console.log("message.msg.text = " + JSON.stringify(message.msg.text));
+            //     console.log("message.msg.text.text = " + JSON.stringify(message.msg.text.text));
             says = {
                 speaks: 'bot',
                 msg: msg
@@ -70,19 +74,49 @@ class Chatbot extends Component {
         this.df_event_query('Welcome');
     }
 
-    componentDidUpdate () {
+    componentDidUpdate() {
         this.messagesEnd.scrollIntoView({ behaviour: "smooth" })
+    }
+
+    // Render buttons/cards within the chatbot widget
+    renderCards(cards) {
+        return cards.map((card, i) => <Card key={i} payload={card.structValue}/>);
+        }
+
+    // Render a card with the correct style and parameters
+
+    renderOneMessage(message, i) {
+        if (message.msg && message.msg.text && message.msg.text.text) {
+            return <Message key={i} speaks={message.speaks} text={message.msg.text.text}/>;
+        } else if(message.msg && message.msg.payload && message.msg.payload.fields && message.msg.payload.cards) {
+            return <div key={i}>
+                <div className="card-panel grey lighten-5 z-depth-1">
+                    <div style={{overflow: 'hidden'}}>
+                        <div className="col s2">
+                            <a className="btn-floating btn-large waves-effect waves-light blue">{message.speaks}</a>
+                        </div>
+
+                        <div style={{overflow: 'auto', overflowY: 'scroll'}}>
+                            <div style={{height: 300, width: message.msg.payload.fields.cards.listValue.values.length * 270}}>
+                                {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        else {
+            console.error('ERROR: renderOneMessage is not loading the cards properly. Please try again later.');
+        }
+
+        
     }
 
     renderMessages(stateMessages) {
         if(stateMessages) {
             return stateMessages.map((message, i) => {
-                if (message.msg && message.msg.text && message.msg.text.text) {
-                    return <Message key={i} speaks={message.speaks} text={message.msg.text.text}/>;
-                } else {
-                    return <h2>Cards</h2>;
-                }
-            
+                return this.renderOneMessage(message, i);
             })
         } else {
             return null;
