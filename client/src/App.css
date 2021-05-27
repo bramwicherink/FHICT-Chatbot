@@ -1,5 +1,9 @@
 /* MAIN CSS STYLING */
 
+.landing-container {
+    background-repeat: no-repeat;
+}
+
 .chatbotWidget {
     display: inline-block;
     position: sticky;
@@ -118,4 +122,9 @@ float: right;
 
 .whitetext {
     color: #FFFFFF;
+}
+
+/* OVERRULE LIBRARY PROPERTIES */
+.row {
+    margin-bottom: 5px;
 }

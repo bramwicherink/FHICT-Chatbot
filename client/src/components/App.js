@@ -3,9 +3,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import About from './pages/About';
 import Chatbot from './chatbot/Chatbot';
+import FontysBackground from '../img/background-static-FontysPRO.png';
 
 const App = () => (
-        <div style={{ backgroundImage: "../img/background-static-FontysPRO.png"}}>
+        <div style={{ backgroundImage: FontysBackground}}>
             <BrowserRouter>
                 <div className="container">
                     <Route exact path="/" component={Landing} />

@@ -53,6 +53,8 @@ class Chatbot extends Component {
                 speaks: 'bot',
                 msg: msg
             }
+            // Kleine vertraging om de conversatie zo natuurlijk mogelijk te laten aanvoelen -> vanuit chatbot
+            await new Promise(resolve => setTimeout(resolve, 900));    
             this.setState({ messages: [...this.state.messages, says]});
         }
     };
