@@ -1,5 +1,5 @@
 .chatbotWidget {
-    display: block;
+    display: inline-block;
     position: sticky;
     /* top: 200px; */
     left: 1200px;
