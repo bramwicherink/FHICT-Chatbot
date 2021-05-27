@@ -1,0 +1,119 @@
+.chatbotWidget {
+    display: block;
+    position: sticky;
+    /* top: 200px; */
+    left: 1200px;
+    top: calc(100% - 760px);
+    height: 655px;
+    overflow-y: scroll;
+    width: 450px;
+    background-color: #ffffff;
+
+    -webkit-box-shadow: 4px 4px 10px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 10px -5px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 10px -5px rgba(0,0,0,0.75);
+
+}
+
+
+.chatbotWidget-header {
+    background-color: #0076E0;
+    color: #FFFFFF;
+    height: 10%;
+    width: 450px;
+    position: fixed;
+    z-index: 999;
+}
+
+
+input[type=text] {
+    height: 10%;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+    /* border-radius: 14px; */
+    border: none;
+    color: #484848;
+    padding-left: 5%;
+    float: left;
+    font-size: 16px;
+    position: absolute;
+    right:    0;
+    bottom:   0;
+    float: bottom;
+    position: sticky;
+    z-index: 999;
+}
+
+.messageBoxContainer {
+    width: 100%;
+}
+
+.chatbotWidget-header h2 {
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    padding-top: 10px;  
+    padding-left: 12px;
+    margin: 0;
+    height: 45px;
+}
+
+.chatbotWidget-header p {
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding-left: 13px;
+}
+
+.chatbotAnswer {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background-color: #0076E0;
+    color: #FFFFFF;
+    max-width: 70%;
+    height: auto;
+    clear: both;
+    padding: 2% 2%;
+    margin-top: 3%;
+    margin-left: 3%;
+    float: left;
+}
+
+
+#chatbotAnswer > p {
+    padding: 20px;
+}
+
+.userAnswer {
+font-family: 'Arial', sans-serif;
+font-size: 16px;
+background-color: #1CC600;
+color: #FFFFFF;
+max-width: 70%;
+height: auto;
+clear: both;
+padding: 2% 2%;
+margin-top: 3%;
+margin-right: 3%;
+float: right;
+}
+
+.userAnswer > p {
+    padding: 20px;
+}
+
+#userAnswer p span {
+    padding: 20px;
+    margin: 60px;
+}
+
+.messageBox {
+    height: 75%;
+    margin-top: 25%;
+}
+
+.whitetext {
+    color: #FFFFFF;
+}

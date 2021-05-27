@@ -1,33 +1,41 @@
 import React from 'react';
+import '../../App.css'
 
 const Message = (props) => (
-    <div className="col s12 m8 offset-m2 offset-l3">
-        <div className="card-panel grey lighten-5 z-depth-1">
+    
+    
+        // <div className="card-panel grey lighten-5 z-depth-1">
             <div className="row valign-wrapper">
-                
+              <div className="messageBoxContainer">  
                 {props.speaks==='bot' && 
                 // Show avatar of bot
-                <div className="col s2">
-                <a className="btn-floating btn-large waves-effect waves-light blue">{props.speaks}</a>
+                <div className="chatbotAnswer">
+                    <div className="col s10">
+                        <span className="whitetext">
+                            {props.text}
+                        </span>
+                    </div>
+                
                 </div>
                 }
 
-            <div className="col s10">
-                <span className="black-text">
-                    {props.text}
-                </span>
-            </div>
+           
 
-            {props.speaks==='Ik' && 
-            // Show avatar of 'Ik/me'
-                <div className="col s2">
-                <a className="btn-floating btn-large waves-effect waves-light blue">{props.speaks}</a>
+                {props.speaks==='Ik' && 
+                // Show avatar of 'Ik/Me'
+                <div className="userAnswer">
+                    <div className="col s2">
+                        <span className="whitetext">
+                            {props.text}
+                        </span>
+                    </div>
+                
                 </div>
                 }
 
             </div>
+        
         </div>
-    </div>
 );
 
 export default Message;
