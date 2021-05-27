@@ -24,7 +24,7 @@ const Message = (props) => (
                 {props.speaks==='Ik' && 
                 // Show avatar of 'Ik/Me'
                 <div className="userAnswer">
-                    <div className="col s2">
+                    <div className="col s10">
                         <span className="whitetext">
                             {props.text}
                         </span>

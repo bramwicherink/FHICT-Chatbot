@@ -103,7 +103,7 @@ float: right;
 }
 
 .userAnswer > p {
-    padding: 20px;
+    padding: 0px;
 }
 
 #userAnswer p span {
