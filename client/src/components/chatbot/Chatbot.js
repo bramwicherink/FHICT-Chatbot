@@ -97,7 +97,7 @@ class Chatbot extends Component {
                     <div style={{overflow: 'hidden'}}>
                     </div>
                  <div style={{overflow: 'auto', overflowY: 'scroll'}}>
-                     <div style={{height: 300, width: message.msg.payload.fields.cards.listValue.values.length * 270}}>
+                     <div style={{height: 300, width: message.msg.payload.fields.cards.listValue.values.length * 270, display: 'flex'}}>
                         {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
                      </div>
                  </div>

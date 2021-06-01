@@ -9,7 +9,7 @@ const Card = (props) => {
           <span className="card-title">{props.payload.fields.header.stringValue}</span>
     </div>
         <div className="card-action">
-          <a href="_blank">{props.payload.fields.header.stringValue}</a>
+          <a href={props.payload.fields.link.stringValue} target="_blank" className="blue-text text-darken-2">{props.payload.fields.linkText.stringValue}</a>
         </div>
   </div>
   </div>
