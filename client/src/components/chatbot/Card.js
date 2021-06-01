@@ -1,19 +1,20 @@
 import React from 'react';
 
 const Card = (props) => {
-    <div style={{ float: "left", paddingRight: 30, width: 270 }}>
+  return (
+  <div style={{ width: 270, paddingRight: 30}}>
+    <div className="card">
         <div className="card-image">
-        <img alt={props.payload.fields.header.stringValue} src={props.payload.fields.image.stringValue}/>
-        </div>
-      <div className="card-stacked">
-        <div className="card-content">
-          <p>{props.payload.fields.header.stringValue}</p>
-        </div>
-        <div className="card-action">
-          <a target="_blank" rel="noopener noreferrer" href={props.payload.fields.link.stringValue}>{props.payload.fields.header.stringValue}</a>
-        </div>
-      </div>
+          <img alt={props.payload.fields.icon.stringValue} src={props.payload.fields.icon.stringValue}></img>
+          <span className="card-title">{props.payload.fields.header.stringValue}</span>
     </div>
-}
+        <div className="card-action">
+          <a href="_blank">{props.payload.fields.header.stringValue}</a>
+        </div>
+  </div>
+  </div>
+  );
+  };
+
 
 export default Card;

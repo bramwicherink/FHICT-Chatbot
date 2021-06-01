@@ -27,28 +27,25 @@ class Chatbot extends Component {
 
     // Functie die zorgt voor het juist weergeven van de tekst in de chatbotwidget
     // Text verwerking
-    async df_text_query(text) {
+    async df_text_query(queryText) {
 
         // Data initialisatie
         let says = {
-            speaks: 'Ik',
+            speaks: 'user',
             msg: {
                 text: {
-                    text: text
+                    text: queryText
                 }
             }
         }
         // Zorgt voor het juist weergeven van de data
         this.setState({ messages: [...this.state.messages, says] });
         // Opvragen van gegevens in de backend / API vanuit Dialogflow
-        const res = await axios.post('api/df_text_query', { text, userID: cookies.get('userID') })
+        const res = await axios.post('api/df_text_query', { text: queryText, userID: cookies.get('userID') })
 
         // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
         for(let msg of res.data.fulfillmentMessages) {
-            console.log("msg = " + JSON.stringify(msg));
-            // console.log("message.msg = " + JSON.stringify(message.msg));
-            //     console.log("message.msg.text = " + JSON.stringify(message.msg.text));
-            //     console.log("message.msg.text.text = " + JSON.stringify(message.msg.text.text));
+            console.log(JSON.stringify(msg));
             says = {
                 speaks: 'bot',
                 msg: msg
@@ -56,6 +53,7 @@ class Chatbot extends Component {
             // Kleine vertraging om de conversatie zo natuurlijk mogelijk te laten aanvoelen -> vanuit chatbot
             await new Promise(resolve => setTimeout(resolve, 900));    
             this.setState({ messages: [...this.state.messages, says]});
+            
         }
     };
 
@@ -65,7 +63,7 @@ class Chatbot extends Component {
         const res = await axios.post('api/df_event_query', { event, userID: cookies.get('userID') })
 
         for(let msg of res.data.fulfillmentMessages) {
-            console.log(JSON.stringify(msg));
+
             let says = {
                 speaks: 'bot',
                 msg: msg
@@ -89,17 +87,30 @@ class Chatbot extends Component {
 
     // Render a card with the correct style and parameters
 
- 
+    renderOneMessage(message, i) {
+        if(message.msg && message.msg.text && message.msg.text.text) {
+            return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
+        }
+        else if(message.msg && message.msg.payload && message.msg.payload.fields && message.msg.payload.fields.cards) {
+            return  <div key={i}>
+                <div className="card-panel grey lighten-5 z-depth-1">
+                    <div style={{overflow: 'hidden'}}>
+                    </div>
+                 <div style={{overflow: 'auto', overflowY: 'scroll'}}>
+                     <div style={{height: 300, width: message.msg.payload.fields.cards.listValue.values.length * 270}}>
+                        {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
+                     </div>
+                 </div>
+                </div>
+            </div>
+        }
+
+    }
 
     renderMessages(stateMessages) {
         if(stateMessages) {
             return stateMessages.map((message, i) => {
-                if(message.msg && message.msg.text && message.msg.text.text) {
-                    return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
-                } else {
-                    return <h2 key={i}>Cards</h2>
-                }
-                
+                return this.renderOneMessage(message, i);
             });
         } else {
             return null;
@@ -145,5 +156,5 @@ class Chatbot extends Component {
     }
 }
 
-
 export default Chatbot;
+
