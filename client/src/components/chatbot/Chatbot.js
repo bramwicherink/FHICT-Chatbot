@@ -22,7 +22,6 @@ class Chatbot extends Component {
         if(cookies.get('userID') === undefined) {
         cookies.set('userID', uuid(), {path: '/'});
         }
-        console.log(cookies.get('userID'));
     }
 
     // Functie die zorgt voor het juist weergeven van de tekst in de chatbotwidget
@@ -45,7 +44,7 @@ class Chatbot extends Component {
 
         // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
         for(let msg of res.data.fulfillmentMessages) {
-            console.log(JSON.stringify(msg));
+            
             says = {
                 speaks: 'bot',
                 msg: msg
@@ -93,11 +92,11 @@ class Chatbot extends Component {
         }
         else if(message.msg && message.msg.payload && message.msg.payload.fields && message.msg.payload.fields.cards) {
             return  <div key={i}>
-                <div className="card-panel grey lighten-5 z-depth-1">
+                <div className="card card-fontys">
                     <div style={{overflow: 'hidden'}}>
                     </div>
                  <div style={{overflow: 'auto', overflowY: 'scroll'}}>
-                     <div style={{height: 300, width: message.msg.payload.fields.cards.listValue.values.length * 270, display: 'flex'}}>
+                     <div style={{height: 260, width: message.msg.payload.fields.cards.listValue.values.length * 270, display: 'flex'}}>
                         {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
                      </div>
                  </div>

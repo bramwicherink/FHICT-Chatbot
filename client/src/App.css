@@ -29,6 +29,9 @@
     width: 450px;
     position: fixed;
     z-index: 999;
+    -webkit-box-shadow: 4px 4px 10px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 10px -5px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 10px -5px rgba(0,0,0,0.75);
 }
 
 
@@ -122,6 +125,27 @@ float: right;
 
 .whitetext {
     color: #FFFFFF;
+}
+
+/* CARD STYLING */
+
+.card-fontys {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding-left: 12px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.card-image img {
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
 }
 
 /* OVERRULE LIBRARY PROPERTIES */
