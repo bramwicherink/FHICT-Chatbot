@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
+    "file-loader": "^6.2.0",
     "nodemon": "^2.0.7"
   }
 }

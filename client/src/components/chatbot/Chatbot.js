@@ -15,8 +15,11 @@ class Chatbot extends Component {
     constructor(props) {
         super(props);
         this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
+        this.hide = this.hide.bind(this);
+        this.show = this.show.bind(this);   
         this.state = {
-            messages: []
+            messages: [],
+            showBot: false
         }
 
         if(cookies.get('userID') === undefined) {
@@ -79,6 +82,14 @@ class Chatbot extends Component {
         this.messagesEnd.scrollIntoView({ behaviour: "smooth" })
     }
 
+    show() {
+        this.setState({showBot: true});
+    }
+
+    hide() {
+        this.setState({showBot: false});
+    }
+
     // Render buttons/cards within the chatbot widget
     renderCards(cards) {
         return cards.map((card, i) => <Card key={i} payload={card.structValue}/>);
@@ -124,7 +135,11 @@ class Chatbot extends Component {
     }
 
     render() {
+        if(this.state.showBot) {
         return (
+        <div>
+            <button id="toggleChatbot-open" onClick={this.hide}><img src={"http://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
+           
           <div style={{height: 800, width: 400, float: 'right'}}>
               <div className="chatbotWidget">
                   <div className="chatbotWidget-header">
@@ -151,7 +166,20 @@ class Chatbot extends Component {
                   onKeyPress={this._handleInputKeyPress}></input>
               </div>
           </div>  
+        </div>
         )
+      }
+      else {
+        return (
+            <div>
+            <button id="toggleChatbot-open" onClick={this.show}><img src={"http://chatbot-fhict.bramwicherink.nl/images/chat.svg"}></img></button>
+            <div ref={(el) => { this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
+
+                  </div>
+            </div>
+            
+          )
+      }
     }
 }
 

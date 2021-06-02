@@ -148,6 +148,49 @@ float: right;
   -webkit-filter: blur(2px);
 }
 
+/* TOGGLE CHATBOT BUTTON */
+#toggleChatbot-open {
+    display: block;
+    background-color: #0076E0;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    /* top: 875px; */
+    left: 1585px;
+    top: calc(100% - 90px);
+    z-index: 999;
+    border-color: transparent;
+}
+
+#toggleChatbot-open img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#toggleChatbot-close {
+    display: block;
+    background-color: #0076E0;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    /* top: 875px; */
+    left: 1585px;
+    top: calc(100% - 90px);
+    z-index: 999;
+    border-color: transparent;
+}
+
+#toggleChatbot-close img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 /* OVERRULE LIBRARY PROPERTIES */
 .row {
     margin-bottom: 10px;
