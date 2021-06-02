@@ -6,9 +6,9 @@
 
 .chatbotWidget {
     display: inline-block;
-    position: sticky;
+    position: absolute;
     /* top: 200px; */
-    left: 1200px;
+    left: 69%;
     top: calc(100% - 760px);
     height: 655px;
     overflow-y: scroll;
@@ -157,7 +157,7 @@ float: right;
     height: 75px;
     position: absolute;
     /* top: 875px; */
-    left: 1585px;
+    left: 92%;
     top: calc(100% - 90px);
     z-index: 999;
     border-color: transparent;
@@ -176,7 +176,7 @@ float: right;
     border-radius: 50%;
     width: 75px;
     height: 75px;
-    position: absolute;
+    position: relative;
     /* top: 875px; */
     left: 1585px;
     top: calc(100% - 90px);

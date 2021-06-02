@@ -43,20 +43,38 @@ class Chatbot extends Component {
         // Zorgt voor het juist weergeven van de data
         this.setState({ messages: [...this.state.messages, says] });
         // Opvragen van gegevens in de backend / API vanuit Dialogflow
-        const res = await axios.post('api/df_text_query', { text: queryText, userID: cookies.get('userID') })
-
-        // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
-        for(let msg of res.data.fulfillmentMessages) {
+        try {
+            const res = await axios.post('api/df_text_query', { text: queryText, userID: cookies.get('userID') });
+            for(let msg of res.data.fulfillmentMessages) {
             
+                says = {
+                    speaks: 'bot',
+                    msg: msg
+                }
+                // Kleine vertraging om de conversatie zo natuurlijk mogelijk te laten aanvoelen -> vanuit chatbot
+                await new Promise(resolve => setTimeout(resolve, 1100));    
+                this.setState({ messages: [...this.state.messages, says]});
+                
+            }
+        }
+        catch(e) {
             says = {
                 speaks: 'bot',
-                msg: msg
+                msg: {
+                    text: {
+                        text: 'Sorry! Ik krijg momenteel helaas geen verbinding en kan helaas niet met je chatten.. Probeer het over enkele minuten opnieuw. Dank je! De chatbot wordt nu afgesloten.'
+                    }
+                }
             }
-            // Kleine vertraging om de conversatie zo natuurlijk mogelijk te laten aanvoelen -> vanuit chatbot
-            await new Promise(resolve => setTimeout(resolve, 900));    
             this.setState({ messages: [...this.state.messages, says]});
-            
+            let that = this;
+            setTimeout(function() {
+                that.setState({ showBot: false});
+            }, 2000);
         }
+
+        // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
+        
     };
 
     
@@ -82,11 +100,15 @@ class Chatbot extends Component {
         this.messagesEnd.scrollIntoView({ behaviour: "smooth" })
     }
 
-    show() {
+    show(event) {
+        event.preventDefault();
+        event.stopPropagation();
         this.setState({showBot: true});
     }
 
-    hide() {
+    hide(event) {
+        event.preventDefault();
+        event.stopPropagation();
         this.setState({showBot: false});
     }
 
