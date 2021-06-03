@@ -9,8 +9,8 @@
     position: absolute;
     /* top: 200px; */
     left: 69%;
-    top: calc(100% - 760px);
-    height: 655px;
+    top: 10%;
+    height: 900px;
     overflow-y: scroll;
     width: 450px;
     background-color: #ffffff;
@@ -25,7 +25,6 @@
 .chatbotWidget-header {
     background-color: #0076E0;
     color: #FFFFFF;
-    height: 10%;
     width: 450px;
     position: fixed;
     z-index: 999;

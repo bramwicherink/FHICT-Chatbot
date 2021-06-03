@@ -19,7 +19,8 @@ class Chatbot extends Component {
         this.show = this.show.bind(this);   
         this.state = {
             messages: [],
-            showBot: false
+            showBot: false,
+            disableInput: false
         }
 
         if(cookies.get('userID') === undefined) {
@@ -56,6 +57,7 @@ class Chatbot extends Component {
                 this.setState({ messages: [...this.state.messages, says]});
                 
             }
+            this.setState({disableInput: !this.state.disableInput});
         }
         catch(e) {
             says = {
@@ -71,6 +73,7 @@ class Chatbot extends Component {
             setTimeout(function() {
                 that.setState({ showBot: false});
             }, 2000);
+            
         }
 
         // Checkt voor iedere 'message' of het vanuit de 'bot' of 'user' komt. 
@@ -153,6 +156,8 @@ class Chatbot extends Component {
         if (e.key === 'Enter') {
             this.df_text_query(e.target.value);
             e.target.value = '';
+            this.setState({disableInput: !this.state.disableInput});
+            console.log("disableInput: " + this.state.disableInput);
         }
     }
 
@@ -184,7 +189,7 @@ class Chatbot extends Component {
                   float: 'bottom', position: 'sticky'}} 
                   
                   placeholder="Typ je vraag hier..." 
-                  
+                  disabled={this.state.disableInput}
                   onKeyPress={this._handleInputKeyPress}></input>
               </div>
           </div>  
