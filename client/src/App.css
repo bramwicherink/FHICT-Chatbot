@@ -204,6 +204,7 @@ float: right;
 /* TYPING INDICATOR */ 
 .message-typing-indicator-container {
     margin-left: 13px;
+    margin-bottom: 13px;
 }
 .typing-indicator {
     background-color: #F5F5F5;
