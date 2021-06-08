@@ -8,7 +8,7 @@ const Message = (props) => (
             <div className="row valign-wrapper">
               <div className="messageBoxContainer">  
                 {props.speaks==='bot' && 
-                // Show avatar of bot
+                // Show bubble of bot
                 <div className="chatbotAnswer">
                     <div className="col s10">
                         <span className="whitetext">
@@ -22,7 +22,7 @@ const Message = (props) => (
            
 
                 {props.speaks==='user' && 
-                // Show avatar of 'Ik/Me'
+                // Show bubble of 'Ik/Me'
                 <div className="userAnswer">
                     <div className="col s10">
                         <span className="whitetext">

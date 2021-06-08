@@ -2,7 +2,7 @@ import React from 'react';
 
 const Landing = () => {
     return (
-        <div><h1>Fontys Chatbot</h1></div>
+        <div class="landing-container"><h1>Fontys Chatbot</h1></div>
     )
 }
 

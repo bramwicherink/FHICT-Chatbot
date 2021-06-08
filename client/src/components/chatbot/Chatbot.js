@@ -20,7 +20,8 @@ class Chatbot extends Component {
         this.state = {
             messages: [],
             showBot: false,
-            disableInput: false
+            disableInput: false,
+            typingIndicator: false
         }
 
         if(cookies.get('userID') === undefined) {
@@ -53,11 +54,14 @@ class Chatbot extends Component {
                     msg: msg
                 }
                 // Kleine vertraging om de conversatie zo natuurlijk mogelijk te laten aanvoelen -> vanuit chatbot
-                await new Promise(resolve => setTimeout(resolve, 1100));    
+                await new Promise(resolve => setTimeout(resolve, 1100)); 
+                this.setState({ typingIndicator: true })  
                 this.setState({ messages: [...this.state.messages, says]});
-                
+                console.log("typingIndicator try for: " + this.state.typingIndicator);
             }
             this.setState({disableInput: !this.state.disableInput});
+            this.setState({ typingIndicator: false });
+            console.log("typingIndicator try: " +  this.state.typingIndicator);
         }
         catch(e) {
             says = {
@@ -158,19 +162,62 @@ class Chatbot extends Component {
             e.target.value = '';
             this.setState({disableInput: !this.state.disableInput});
             console.log("disableInput: " + this.state.disableInput);
+
         }
     }
 
     render() {
         if(this.state.showBot) {
+            if(this.state.typingIndicator) {
+                return (
+                    <div>
+                        <button id="toggleChatbot-open" onClick={this.hide}><img src={"http://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
+                       
+                      <div style={{height: 800, width: 400, float: 'right'}}>
+                          <div className="chatbotWidget animate__animated animate__bounce">
+                              <div className="chatbotWidget-header">
+                              <h2>Chatbot Floris</h2>
+                              <p>Ik help je graag als je vragen hebt!</p>
+                              </div>
+                              <div className="messageBox">
+                                
+                              {this.renderMessages(this.state.messages)}
+                              <div className="message-typing-indicator-container" ref={(el) => { this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
+                              <div class="typing-indicator">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                
+                              </div>
+
+                              
+            
+                              </div>
+                              <input type="text" 
+            
+                              style={{height: '10%', width: '95%', 
+                              backgroundColor: '#FFFFFF', boxShadow: '0px 4px 24px rgba(0, 0,0, 0.08', 
+                              border: 'none', color: '#484848', paddingLeft: '5%',
+                              float: 'left', fontSize: '16px', position: 'absolute', right: '0', bottom: '0',
+                              float: 'bottom', position: 'sticky'}} 
+                              
+                              placeholder="Typ je vraag hier..." 
+                              disabled={this.state.disableInput}
+                              onKeyPress={this._handleInputKeyPress}></input>
+                          </div>
+                      </div>  
+                    </div>
+                    )
+            }
         return (
         <div>
             <button id="toggleChatbot-open" onClick={this.hide}><img src={"http://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
            
           <div style={{height: 800, width: 400, float: 'right'}}>
-              <div className="chatbotWidget">
+              <div className="chatbotWidget animate__animated animate__bounce">
                   <div className="chatbotWidget-header">
-                  <h2>Chatbot Carl</h2>
+                  <h2>Chatbot Floris</h2>
                   <p>Ik help je graag als je vragen hebt!</p>
                   </div>
                   <div className="messageBox">
@@ -199,7 +246,7 @@ class Chatbot extends Component {
       else {
         return (
             <div>
-            <button id="toggleChatbot-open" onClick={this.show}><img src={"http://chatbot-fhict.bramwicherink.nl/images/chat.svg"}></img></button>
+            <button id="toggleChatbot-open" onClick={this.show}><img src={"http://chatbot-fhict.bramwicherink.nl/images/floris-icon.svg"}></img></button>
             <div ref={(el) => { this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
 
                   </div>
