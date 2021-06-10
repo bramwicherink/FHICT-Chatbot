@@ -57,11 +57,10 @@ class Chatbot extends Component {
                 await new Promise(resolve => setTimeout(resolve, 1100)); 
                 this.setState({ typingIndicator: true })  
                 this.setState({ messages: [...this.state.messages, says]});
-                console.log("typingIndicator try for: " + this.state.typingIndicator);
             }
             this.setState({disableInput: !this.state.disableInput});
             this.setState({ typingIndicator: false });
-            console.log("typingIndicator try: " +  this.state.typingIndicator);
+
         }
         catch(e) {
             says = {
@@ -161,7 +160,6 @@ class Chatbot extends Component {
             this.df_text_query(e.target.value);
             e.target.value = '';
             this.setState({disableInput: !this.state.disableInput});
-            console.log("disableInput: " + this.state.disableInput);
 
         }
     }
