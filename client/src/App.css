@@ -1,15 +1,15 @@
 /* MAIN CSS STYLING */
 
-
+body {
+    background-image: url(img/background-static-FontysPRO.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
 
 .landing-container {
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    background-image: url(img/background-static-FontysPRO.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
     z-index: 0;
     width: 100%;
 }
