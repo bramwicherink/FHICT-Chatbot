@@ -171,7 +171,7 @@ class Chatbot extends Component {
             if(this.state.typingIndicator) {
                 return (
                     <div>
-                        <button id="toggleChatbot-open" onClick={this.hide}><img src={"http://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
+                        <button id="toggleChatbot-open" onClick={this.hide}><img src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
                        
                       <div style={{height: 800, width: 400, float: 'right'}}>
                           <div className="chatbotWidget animate__animated animate__bounce">
@@ -212,7 +212,7 @@ class Chatbot extends Component {
             }
         return (
         <div>
-            <button id="toggleChatbot-open" onClick={this.hide}><img src={"http://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
+            <button id="toggleChatbot-open" onClick={this.hide}><img src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
            
           <div style={{height: 800, width: 400, float: 'right'}}>
               <div className="chatbotWidget animate__animated animate__bounce">
@@ -246,7 +246,7 @@ class Chatbot extends Component {
       else {
         return (
             <div>
-            <button id="toggleChatbot-open" onClick={this.show}><img src={"http://chatbot-fhict.bramwicherink.nl/images/floris-icon.svg"}></img></button>
+            <button id="toggleChatbot-open" onClick={this.show}><img src={"https://chatbot-fhict.bramwicherink.nl/images/floris-icon.svg"}></img></button>
             <div ref={(el) => { this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
 
                   </div>
