@@ -63,6 +63,12 @@ input[type=text] {
     z-index: 999;
 }
 
+.arrow-input {
+    background-image: url(https://chatbot-fhict.bramwicherink.nl/images/arrow.svg);
+    position: absolute; 
+    bottom: 20px;
+}
+
 .messageBoxContainer {
     width: 100%;
 }
@@ -87,7 +93,7 @@ input[type=text] {
 
 .chatbotAnswer {
     font-family: 'Arial', sans-serif;
-    font-size: 16px;
+    font-size: 21px;
     background-color: #0076E0;
     color: #FFFFFF;
     max-width: 70%;
@@ -106,7 +112,7 @@ input[type=text] {
 
 .userAnswer {
 font-family: 'Arial', sans-serif;
-font-size: 16px;
+font-size: 21px;
 background-color: #1CC600;
 color: #FFFFFF;
 max-width: 70%;

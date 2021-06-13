@@ -14,16 +14,20 @@ class Chatbot extends Component {
     // Initialiseert de data component
     constructor(props) {
         super(props);
+        // handleInputKeyPress registreert of het invoerveld (voor vragen) al dan niet is geselecteerd of een waarde heeft (ingetypte tekst) 
         this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
         this.hide = this.hide.bind(this);
         this.show = this.show.bind(this);   
+        // Definiëren van de state en eigenschappen die later in de code gebruikt kunnen worden
         this.state = {
             messages: [],
             showBot: false,
+        // disableInput kijkt naar of het invoerveld al dan niet uitgeschakeld dient te worden
             disableInput: false,
+        // typingIndicator kijkt naar of er vanuit de API responses komen 
             typingIndicator: false
         }
-
+        // Zorgt voor een unieke userID waarmee iedere keer dat de pagina herladen wordt een andere sessie gestart wordt. Dit is benodigd voor Dialogflow zodat de verschillende sessies o.a. opgeslagen kunnen worden ter analyse van iedere dialoog.
         if(cookies.get('userID') === undefined) {
         cookies.set('userID', uuid(), {path: '/'});
         }
@@ -62,6 +66,8 @@ class Chatbot extends Component {
             this.setState({ typingIndicator: false });
 
         }
+
+        // Wanneer de chatbotwidget geen verbinding kan maken met de Dialogflow API services, geeft deze een foutmelding middels catch statement weer. 
         catch(e) {
             says = {
                 speaks: 'bot',
@@ -71,6 +77,7 @@ class Chatbot extends Component {
                     }
                 }
             }
+            // Wanneer chatbotwidget geen verbinding krijgt, zal de chatbot na 2000ms = 2 seconden dichtklappen
             this.setState({ messages: [...this.state.messages, says]});
             let that = this;
             setTimeout(function() {
@@ -84,7 +91,7 @@ class Chatbot extends Component {
     };
 
     
-
+    // Checkt voor bepaalde events vanuit Dialogflow 
     async df_event_query(event) {
         const res = await axios.post('api/df_event_query', { event, userID: cookies.get('userID') })
 
@@ -97,33 +104,33 @@ class Chatbot extends Component {
             this.setState({ messages: [...this.state.messages, says]});
         }
     }
-
+    // Wanneer component/pagina volledig gerenderd is, zal het event 'Welcome' vanuit Dialogflow gestart worden. Dit zorgt voor het weergeven van het welkomstbericht.
     componentDidMount() {
         this.df_event_query('Welcome');
     }
-
+    // Wanneer er iedere keer een bericht wordt gestuurd of ontvangen wordt in de chatbotwidget, scrollt de widget automatisch mee met het laatstgestuurde bericht
     componentDidUpdate() {
         this.messagesEnd.scrollIntoView({ behaviour: "smooth" })
     }
-
+    // Wanneer de chatbotknop state 'hide' geklikt wordt, wordt er een show methode aangeroepen die ervoor zorgt dat de chatbotwidget daadwerkelijk weergegeven wordt
     show(event) {
         event.preventDefault();
         event.stopPropagation();
         this.setState({showBot: true});
     }
-
+     // Wanneer de chatbotknop state 'open' geklikt wordt, wordt er een show methode aangeroepen die ervoor zorgt dat de chatbotwidget daadwerkelijk gesloten wordt
     hide(event) {
         event.preventDefault();
         event.stopPropagation();
         this.setState({showBot: false});
     }
 
-    // Render buttons/cards within the chatbot widget
+        // Zorgt voor het renderen van de cards wanneer deze aangeroepen worden vanuit de API
     renderCards(cards) {
         return cards.map((card, i) => <Card key={i} payload={card.structValue}/>);
         }
 
-    // Render a card with the correct style and parameters
+    // Zorgt voor het opmaken van de card met correcte stijl 
 
     renderOneMessage(message, i) {
         if(message.msg && message.msg.text && message.msg.text.text) {
@@ -144,7 +151,7 @@ class Chatbot extends Component {
         }
 
     }
-
+    // Methode die renderCards & renderOneMessage samen pakt en zorgt voor de weergave
     renderMessages(stateMessages) {
         if(stateMessages) {
             return stateMessages.map((message, i) => {
@@ -155,6 +162,8 @@ class Chatbot extends Component {
         }
     }
 
+    // Zorgt voor het disablen en enablen van het invoerveld, zolang er berichten vanuit de chatbot zelf worden verzonden, om een overload aan berichten van de potential/user/gebruiker te voorkomen
+
     _handleInputKeyPress(e) {
         if (e.key === 'Enter') {
             this.df_text_query(e.target.value);
@@ -164,12 +173,17 @@ class Chatbot extends Component {
         }
     }
 
+    // Zorgt voor het daadwerkelijk renderen van de elementen bij elkaar
+
     render() {
+        // Wanneer de state showBot 'true' is, dus wanneer de chatbotwidget geopend is
         if(this.state.showBot) {
+            // Wanneer de chatbot zelf aan het typen is en de typingIndicator (true) verschijnt
             if(this.state.typingIndicator) {
+                // Laat dit weergeven: 
                 return (
                     <div>
-                        <button id="toggleChatbot-open" onClick={this.hide}><img src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
+                        <button id="toggleChatbot-open" onClick={this.hide}><img alt="X" src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
                        
                       <div style={{height: 800, width: 400, float: 'right'}}>
                           <div className="chatbotWidget animate__animated animate__bounce">
@@ -192,17 +206,21 @@ class Chatbot extends Component {
                               
             
                               </div>
+                              
                               <input type="text" 
             
                               style={{height: '10%', width: '95%', 
                               backgroundColor: '#FFFFFF', boxShadow: '0px 4px 24px rgba(0, 0,0, 0.08', 
                               border: 'none', color: '#484848', paddingLeft: '5%',
-                              float: 'left', fontSize: '16px', position: 'absolute', right: '0', bottom: '0',
+                              fontSize: '16px', right: '0', bottom: '0',
                               float: 'bottom', position: 'sticky'}} 
                               
                               placeholder="Typ je vraag hier..." 
                               disabled={this.state.disableInput}
                               onKeyPress={this._handleInputKeyPress}></input>
+                            
+                              
+                            
                           </div>
                       </div>  
                     </div>
@@ -210,7 +228,7 @@ class Chatbot extends Component {
             }
         return (
         <div>
-            <button id="toggleChatbot-open" onClick={this.hide}><img src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
+            <button id="toggleChatbot-open" onClick={this.hide}><img alt="X" src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
            
           <div style={{height: 800, width: 400, float: 'right'}}>
               <div className="chatbotWidget animate__animated animate__bounce">
@@ -225,17 +243,25 @@ class Chatbot extends Component {
                   </div>
 
                   </div>
-                  <input type="text" 
-
-                  style={{height: '10%', width: '95%', 
-                  backgroundColor: '#FFFFFF', boxShadow: '0px 4px 24px rgba(0, 0,0, 0.08', 
-                  border: 'none', color: '#484848', paddingLeft: '5%',
-                  float: 'left', fontSize: '16px', position: 'absolute', right: '0', bottom: '0',
-                  float: 'bottom', position: 'sticky'}} 
                   
-                  placeholder="Typ je vraag hier..." 
-                  disabled={this.state.disableInput}
-                  onKeyPress={this._handleInputKeyPress}></input>
+                  <input type="text" 
+            
+                              style={{height: '10%', width: '95%', 
+                              backgroundColor: '#FFFFFF', boxShadow: '0px 4px 24px rgba(0, 0,0, 0.08', 
+                              border: 'none', color: '#484848', paddingLeft: '5%',
+                              fontSize: '16px', right: '0', bottom: '0',
+                              float: 'bottom', position: 'sticky'}} 
+                              
+                              placeholder="Typ je vraag hier..." 
+                              disabled={this.state.disableInput}
+                              onKeyPress={this._handleInputKeyPress}></input>
+                  
+                  
+                  
+                  
+
+
+                  
               </div>
           </div>  
         </div>
@@ -244,7 +270,7 @@ class Chatbot extends Component {
       else {
         return (
             <div>
-            <button id="toggleChatbot-open" onClick={this.show}><img src={"https://chatbot-fhict.bramwicherink.nl/images/floris-icon.svg"}></img></button>
+            <button id="toggleChatbot-open" onClick={this.show}><img alt="Open" src={"https://chatbot-fhict.bramwicherink.nl/images/floris-icon.svg"}></img></button>
             <div ref={(el) => { this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
 
                   </div>

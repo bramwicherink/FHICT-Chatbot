@@ -1,5 +1,7 @@
-import React from 'react';
+/* Card.js -> component die zorgt voor de button cards, in materialize stijl zoals Fontys ook betaamt */ 
 
+import React from 'react';
+/* const Card returned een div met als inhoud props.payload die vanuit de API van Dialogflow als JSON response worden aangeroepen */
 const Card = (props) => {
   return (
   <div style={{ width: 270, paddingRight: 30}}>
