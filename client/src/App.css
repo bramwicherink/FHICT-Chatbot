@@ -313,4 +313,8 @@ float: right;
     .messageBox {
         height: 40%;
     }
+
+    .card-fontys {
+        overflow-y: scroll; 
+    }
   }
