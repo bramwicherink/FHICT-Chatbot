@@ -291,7 +291,7 @@ float: right;
     }
 
     .chatbotWidget-wrapper {
-        width: 100%;
+        width: 100vw;
         right: 0 !important;
         bottom: 60% !important;
         top: 0 !important;
