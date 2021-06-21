@@ -185,8 +185,8 @@ class Chatbot extends Component {
                     <div>
                         <button id="toggleChatbot-open" onClick={this.hide}><img alt="X" src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
                        
-                      <div style={{height: 800, width: 400, float: 'right'}}>
-                          <div className="chatbotWidget animate__animated animate__bounce">
+                      <div className="chatbotWidget-wrapper" style={{position: 'fixed', display: 'flex', right: '10vw', float: 'right', height: '100%', width: 'auto', top: '7%'}}>
+                          <div className="chatbotWidget">
                               <div className="chatbotWidget-header">
                               <h2>Chatbot Floris</h2>
                               <p>Ik help je graag als je vragen hebt!</p>
@@ -195,7 +195,7 @@ class Chatbot extends Component {
                                 
                               {this.renderMessages(this.state.messages)}
                               <div className="message-typing-indicator-container" ref={(el) => { this.messagesEnd = el; }} style={{float: 'left', clear: 'both'}}>
-                              <div class="typing-indicator">
+                              <div className="typing-indicator">
                                     <span></span>
                                     <span></span>
                                     <span></span>
@@ -230,8 +230,8 @@ class Chatbot extends Component {
         <div>
             <button id="toggleChatbot-open" onClick={this.hide}><img alt="X" src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
            
-          <div style={{height: 800, width: 400, float: 'right'}}>
-              <div className="chatbotWidget animate__animated animate__bounce">
+          <div className="chatbotWidget-wrapper" style={{position: 'fixed', display: 'flex', right: '10vw', float: 'right', height: '100%', width: 'auto', top: '7%'}}>
+              <div className="chatbotWidget">
                   <div className="chatbotWidget-header">
                   <h2>Chatbot Floris</h2>
                   <p>Ik help je graag als je vragen hebt!</p>

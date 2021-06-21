@@ -1,5 +1,7 @@
 /* MAIN CSS STYLING */
-
+html {
+    box-sizing: border-box;
+}
 body {
     background-image: url(img/background-static-FontysPRO.png);
     background-repeat: no-repeat;
@@ -14,12 +16,14 @@ body {
     width: 100%;
 }
 
+.chatbotWidget-wrapper {
+    display: flex; 
+}
+
 .chatbotWidget {
     display: inline-block;
-    position: fixed;
     /* top: 200px; */
     left: 69%;
-    top: 7%;
     height: 800px;
     overflow-y: scroll;
     width: 450px;
@@ -194,7 +198,7 @@ float: right;
     height: 75px;
     position: relative;
     /* top: 875px; */
-    left: 1585px;
+    left: 92%;
     top: calc(100% - 90px);
     z-index: 999;
     border-color: transparent;
@@ -279,3 +283,28 @@ float: right;
 .row {
     margin-bottom: 10px;
 }
+
+  @media screen and (max-width: 500px) {
+
+    #toggleChatbot-open {
+        top: calc(100%);
+    }
+
+    .chatbotWidget-wrapper {
+        width: 100%;
+        right: 0 !important;
+        bottom: 60% !important;
+    }
+
+    .chatbotWidget {
+        width: 100%;
+    }
+
+    .chatbotWidget-header {
+        width: 100%;
+        background-color: #0076E0;
+        color: #FFFFFF;
+        position: fixed;
+        z-index: 999;
+    }
+  }
