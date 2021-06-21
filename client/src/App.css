@@ -299,6 +299,7 @@ float: right;
 
     .chatbotWidget {
         width: 100%;
+        height: auto;
     }
 
     .chatbotWidget-header {
@@ -307,5 +308,9 @@ float: right;
         color: #FFFFFF;
         position: fixed;
         z-index: 999;
+    }
+
+    .messageBox {
+        height: 40%;
     }
   }
