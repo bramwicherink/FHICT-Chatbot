@@ -287,13 +287,14 @@ float: right;
   @media screen and (max-width: 500px) {
 
     #toggleChatbot-open {
-        top: calc(100%);
+        top: calc(85%);
     }
 
     .chatbotWidget-wrapper {
         width: 100%;
         right: 0 !important;
         bottom: 60% !important;
+        top: 0 !important;
     }
 
     .chatbotWidget {
