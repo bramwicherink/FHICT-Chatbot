@@ -62,7 +62,6 @@ input[type=text] {
     position: absolute;
     right:    0;
     bottom:   0;
-    float: bottom;
     position: sticky;
     z-index: 999;
 }
@@ -149,6 +148,10 @@ float: right;
 
 /* CARD STYLING */
 
+.card .card-fontys {
+    overflow-y: scroll;
+}
+
 .card-fontys {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -177,8 +180,8 @@ float: right;
     height: 75px;
     position: absolute;
     /* top: 875px; */
-    left: 92%;
-    top: calc(100% - 90px);
+    left: 92vw;
+    top: calc(100% - 10vh);
     z-index: 999;
     border-color: transparent;
 }
@@ -284,10 +287,11 @@ float: right;
     margin-bottom: 10px;
 }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
 
     #toggleChatbot-open {
         top: calc(85%);
+        left: 80vw;
     }
 
     .chatbotWidget-wrapper {
@@ -299,7 +303,7 @@ float: right;
 
     .chatbotWidget {
         width: 100%;
-        height: auto;
+        height: 80%;
     }
 
     .chatbotWidget-header {
@@ -314,7 +318,24 @@ float: right;
         height: 40%;
     }
 
+    .card {
+        width: 100vw;
+        height: auto;
+        padding: 20px;
+        
+    }
+
     .card-fontys {
         overflow-y: scroll; 
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        padding-left: 12px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .input[type=text] {
+        float: bottom;
     }
   }
