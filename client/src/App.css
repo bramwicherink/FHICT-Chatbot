@@ -290,7 +290,7 @@ float: right;
   @media screen and (max-width: 600px) {
 
     #toggleChatbot-open {
-        top: calc(85%);
+        top: calc(90%);
         left: 80vw;
     }
 
@@ -303,7 +303,7 @@ float: right;
 
     .chatbotWidget {
         width: 100%;
-        height: 80%;
+        height: 100%;
     }
 
     .chatbotWidget-header {
@@ -318,11 +318,16 @@ float: right;
         height: 40%;
     }
 
+    .card-container {
+        width: 25%;
+        padding-right: 30px;
+        
+    }
+
     .card {
         width: 100vw;
         height: auto;
-        padding: 20px;
-        
+        padding-right: 30px;
     }
 
     .card-fontys {
@@ -338,4 +343,5 @@ float: right;
     .input[type=text] {
         float: bottom;
     }
+
   }

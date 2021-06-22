@@ -4,7 +4,7 @@ import React from 'react';
 /* const Card returned een div met als inhoud props.payload die vanuit de API van Dialogflow als JSON response worden aangeroepen */
 const Card = (props) => {
   return (
-  <div style={{ width: 270, paddingRight: 30}}>
+  <div className="card-container">
     <div className="card">
         <div className="card-image">
           <img alt={props.payload.fields.icon.stringValue} src={props.payload.fields.icon.stringValue}></img>

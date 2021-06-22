@@ -137,12 +137,12 @@ class Chatbot extends Component {
             return <Message key={i} speaks={message.speaks} text={message.msg.text.text} />;
         }
         else if(message.msg && message.msg.payload && message.msg.payload.fields && message.msg.payload.fields.cards) {
-            return  <div key={i}>
+            return  <div key={i} style={{overflow: 'scroll hidden'}}>
                 <div className="card card-fontys">
-                    <div style={{overflow: 'hidden'}}>
+                    <div style={{overflow: 'scroll hidden'}}>
                     </div>
-                 <div style={{overflow: 'auto', overflowY: 'scroll'}}>
-                     <div style={{height: 260, width: message.msg.payload.fields.cards.listValue.values.length * 270, display: 'flex'}}>
+                 <div style={{overflow: 'scroll hidden', marginBottom: '30px'}}>
+                     <div style={{height: '100%', width: message.msg.payload.fields.cards.listValue.values.length * 270, display: 'flex'}}>
                         {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
                      </div>
                  </div>
