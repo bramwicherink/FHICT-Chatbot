@@ -175,12 +175,13 @@ class Chatbot extends Component {
     }
 
     _handleInputButtonPress(e) {
-        console.log('HandleInputButtonPress')
+        if(document.getElementById('chatbotInput').value !== '') {
         var inputFieldQuestion = document.getElementById('chatbotInput').value;
-        console.log("Test");
+        
         this.df_text_query(inputFieldQuestion);
         document.getElementById('chatbotInput').value = '';
         this.setState({ disableInput: !this.state.disableInput });
+        }
     }
 
 
