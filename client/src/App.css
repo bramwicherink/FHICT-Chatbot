@@ -139,7 +139,7 @@ border-radius: 7px 4px;
 .messageBox {
     height: 75%;
     margin-top: 25%;
-    overflow: auto scroll;
+    overflow: auto scroll;  
 }
 
 .whitetext {
@@ -300,7 +300,7 @@ border-radius: 7px 4px;
     margin-bottom: 10px;
 }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 600px), screen and (max-height: 830px) {
 
     #toggleChatbot-open {
         top: calc(90%);
