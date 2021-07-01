@@ -66,10 +66,8 @@ input[type=text] {
     z-index: 999;
 }
 
-.arrow-input {
-    background-image: url(https://chatbot-fhict.bramwicherink.nl/images/arrow.svg);
-    position: absolute; 
-    bottom: 20px;
+.arrowIcon {
+    margin-top: 40px;
 }
 
 .messageBoxContainer {
@@ -96,7 +94,7 @@ input[type=text] {
 
 .chatbotAnswer {
     font-family: 'Arial', sans-serif;
-    font-size: 21px;
+    font-size: 16px;
     background-color: #0076E0;
     color: #FFFFFF;
     max-width: 70%;
@@ -106,6 +104,7 @@ input[type=text] {
     margin-top: 3%;
     margin-left: 3%;
     float: left;
+    border-radius: 3px;
 }
 
 
@@ -115,7 +114,7 @@ input[type=text] {
 
 .userAnswer {
 font-family: 'Arial', sans-serif;
-font-size: 21px;
+font-size: 16px;
 background-color: #1CC600;
 color: #FFFFFF;
 max-width: 70%;
@@ -125,6 +124,7 @@ padding: 2% 2%;
 margin-top: 3%;
 margin-right: 3%;
 float: right;
+border-radius: 7px 4px;
 }
 
 .userAnswer > p {
@@ -139,6 +139,7 @@ float: right;
 .messageBox {
     height: 75%;
     margin-top: 25%;
+    overflow: auto scroll;
 }
 
 .whitetext {
@@ -252,6 +253,18 @@ float: right;
     opacity: 0.4;
 }
 
+.inputField {
+    height: 83px;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100%;
+}
+
+.inputField > input {
+    height: 10px;
+}
+
 
 .typing-indicator span:nth-child(1)
 {
@@ -321,13 +334,14 @@ float: right;
     .card-container {
         width: 25%;
         padding-right: 30px;
-        
+         
     }
 
     .card {
         width: 100vw;
         height: auto;
         padding-right: 30px;
+        margin: .5rem 0 1rem 0;
     }
 
     .card-fontys {
@@ -340,8 +354,12 @@ float: right;
         padding-bottom: 0;
     }
 
-    .input[type=text] {
-        float: bottom;
-    }
+  
+
+    
 
   }
+
+  .input[type=image] {
+    margin-top: 40px;  
+}
