@@ -198,7 +198,7 @@ class Chatbot extends Component {
                     <div>
                         <button id="toggleChatbot-open" onClick={this.hide}><img alt="X" src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
 
-                        <div className="chatbotWidget-wrapper" style={{ position: 'fixed', display: 'flex', right: '10vw', float: 'right', height: '100%', width: 'auto', top: '7%' }}>
+                        <div className="chatbotWidget-wrapper" style={{ position: 'fixed', display: 'flex', right: '8vw', float: 'right', height: '100%', width: 'auto', top: '9%' }}>
                             <div className="chatbotWidget">
                                 <div className="chatbotWidget-header">
                                     <h2>Chatbot Floris</h2>
@@ -249,7 +249,7 @@ class Chatbot extends Component {
                 <div>
                     <button id="toggleChatbot-open" onClick={this.hide}><img alt="X" src={"https://chatbot-fhict.bramwicherink.nl/images/letter-x.svg"}></img></button>
 
-                    <div className="chatbotWidget-wrapper" style={{ position: 'fixed', display: 'flex', right: '10vw', float: 'right', height: '100%', width: 'auto', top: '7%' }}>
+                    <div className="chatbotWidget-wrapper" style={{ position: 'fixed', display: 'flex', right: '8vw', float: 'right', height: '100%', width: 'auto', top: '9%' }}>
                         <div className="chatbotWidget">
                             <div className="chatbotWidget-header">
                                 <h2>Chatbot Floris</h2>
