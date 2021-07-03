@@ -64,6 +64,7 @@ input[type=text] {
     bottom:   0;
     position: sticky;
     z-index: 999;
+    padding-right: 20px;
 }
 
 .arrowIcon {
@@ -255,9 +256,9 @@ border-radius: 7px 4px;
 
 .inputField {
     height: 83px;
-    display: flex;
+    display: inline-flex;
+    position: relative;
     flex-direction: row;
-    position: absolute;
     width: 100%;
 }
 
@@ -328,7 +329,7 @@ border-radius: 7px 4px;
     }
 
     .messageBox {
-        height: 40%;
+        height: 60%;
     }
 
     .card-container {
@@ -353,13 +354,12 @@ border-radius: 7px 4px;
         margin-bottom: 0;
         padding-bottom: 0;
     }
-
-  
-
     
 
   }
 
-  .input[type=image] {
-    margin-top: 40px;  
+  input[type=image] {
+    position: absolute;
+    z-index: 999;
+    left: 85%;
 }

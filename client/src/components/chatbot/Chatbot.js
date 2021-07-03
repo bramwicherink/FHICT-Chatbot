@@ -268,7 +268,7 @@ class Chatbot extends Component {
                                 <input type="text" id="chatbotInput"
 
                                     style={{
-                                        height: '100%', width: '95%',
+                                        height: '100%',
                                         backgroundColor: '#FFFFFF', boxShadow: '0px 4px 24px rgba(0, 0,0, 0.08',
                                         border: 'none', color: '#484848', paddingLeft: '5%',
                                         fontSize: '16px', right: '0', bottom: '0',
